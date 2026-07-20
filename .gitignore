@@ -1,0 +1,14 @@
+# Public showcase repo: documentation and results only, no source code.
+# Whitelist model — ignore everything, then re-include only the showcase files.
+# The full source stays on disk locally but is never tracked here.
+
+/*
+!/.gitignore
+!/README.md
+
+# experiment/out screenshots (referenced by the README) — nothing else
+!/experiment/
+/experiment/*
+!/experiment/out/
+/experiment/out/*
+!/experiment/out/*.jpg
