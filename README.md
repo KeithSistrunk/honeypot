@@ -56,10 +56,20 @@ crosses the line it **latches** into shadow and stays there.
 
 ### Live dashboard
 
-A read-only web console (`dashboard/`) that tails the decision log over
-Server-Sent Events and shows each session being scored and routed in real time —
-per-session summary cards (green REAL / red SHADOW), a color-coded feed, and
-running catch-rate counters.
+A two-tab web console (`dashboard/`):
+
+- **Attack** — pick an attack from the RedOwl pool (or a clean preset), fire it at
+  the gate, and see the attacker-facing response with its REAL/SHADOW route badge
+  pulled from the defender log. An Auto-Run mode fires the pool hands-free.
+- **Monitor** — the defender view: a live SSE feed of every decision, per-session
+  summary cards (green REAL / red SHADOW) that flash **FLIPPED** on a real→shadow
+  flip, running catch-rate counters, and an animated flow diagram that traces each
+  request to Real Ollama or the Shadow Path in real time. Export the raw log
+  (JSONL) or a PDF report.
+
+![Monitor tab — live routing dots, session cards, and the decision feed](experiment/out/dashboard_monitor_tab.jpg)
+
+![Attack tab — fire pool attacks and watch each route resolve](experiment/out/dashboard_attack_tab.jpg)
 
 ---
 
@@ -90,8 +100,6 @@ single ambiguous signal.
 The honeypot caught 91% of the attack traffic while passing 100% of clean traffic
 — offense meets defense, measured with real numbers.
 
-📸 `experiment/out/dashboard_live_traffic.jpg`
-
 ---
 
 ## Phase 3 — session-level containment
@@ -112,8 +120,6 @@ A user who starts legitimate and turns hostile gets flipped to shadow
 After the flip, even clean prompts hit shadow — and get a generic, plausible
 answer (not the attack-flavored decoy), so a contained attacker who returns to
 innocent questions notices nothing.
-
-📸 `experiment/out/dashboard_session_reroute.jpg`
 
 ### 3b · Multi-user dashboard
 
@@ -146,8 +152,6 @@ legit-user   real=5  shadow=0    (100% real throughout)
 The dashboard shows both side by side — one session green throughout, the other
 flipping red mid-conversation and staying red — with per-session summary cards
 and color-coded feed rows.
-
-📸 `experiment/out/dashboard_multiuser.jpg`
 
 ---
 
